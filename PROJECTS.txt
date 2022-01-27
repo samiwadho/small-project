@@ -1,0 +1,255 @@
+
+					(SUPPLY CHAIN)PROJECT
+
+-----------------------------------------CREATE TABLES ------------------------------------
+
+create TABLE product(product_id number(17),
+product_customer_id varchar2(30),
+product_items varchar2(30),
+product_number number(13),
+product_description varchar2(40),
+company_id int,
+constraint product_product_ID_pk primary key (product_ID));
+
+ALTER TABLE     product
+ADD CONSTRAINT  pro_company_fk 
+  FOREIGN KEY(company_id) 
+  REFERENCES product(product_id);
+
+
+create table Supplier(Supplier_ID number(8)not null,
+company_id int, 
+Supplier_Name varchar2(50)not null,
+Supplier_moblie varchar2(50)not null,
+Supplier_email VARCHAR2(50)not null,
+Supplier_username  varchar2(50)not null,
+Supplier_password number(10) not null,
+Supplier_address varchar2(50) not null,
+constraint Supplier_Supplier_ID_pk primary key (supplier_id));
+
+ALTER TABLE     supplier
+ADD CONSTRAINT  supplier_companyd_fk 
+  FOREIGN KEY(company_id) 
+  REFERENCES supplier(supplier_id);
+
+ 
+create table company(company_id int,
+company_name varchar2(20),
+company_type varchar(40),
+company_description varchar2(50),
+company_address varchar2(50),
+constraint company_company_ID_pk primary key (company_ID));
+
+
+
+create table ORDERS(order_id number(30),
+order_customer_id number(30),
+order_type varchar2(50),
+order_number number(18),
+order_description varchar2(40),
+company_address varchar2(50),
+supplier_id number(8),
+constraint order_order_ID_pk primary key (order_ID));
+
+alter table orders
+ADD CONSTRAINT  orders_supplier_id_fk 
+FOREIGN KEY(supplier_id) 
+REFERENCES orderS(order_id);
+
+
+-----------------------------------------INSERT INTO DATA------------------------------------
+
+insert into company(company_id, company_name,company_type,company_Drescription,company_address)
+values(1,'RUKW','CAR','VERY GOOD','KARACHI');
+values(2,'SAW','WOOD','BAD','LARKANA');
+values(3,'SAW','COPPER','VERY GOOD','KARACHI');
+values(4,'ABW','BUS','VERY GOOD','HYDERABAD');
+values(5,'ABW','CAR','VERY GOOD','KARACHI');
+
+
+insert into orderS(order_id,order_customer_id,order_type,order_number,order_description,
+company_address,supplier_id)
+insert into orders values(201,41,'small',0331,'GOOD','106',3001);
+insert into orders values(202,42,'LARGE',0332,'bed','107 ',3002);
+insert into orders values(203,43,'MEDIUM',0333,'GOOD','108 ',3003);
+insert into orders values(204,44,'small',0334,'GOOD','109 ',3004);
+insert into orders values(205,45,'small',0335,'bed','120 ',3005);
+
+
+
+
+insert into supplier(supplier_id,company_id,supplier_name,supplier_moblie,supplier_email,supplier_username,supplier_password,supplier_address)
+insert into supplier values(3001,1,'sabir',022222221,'abc1@gmail','sabirali',123451,'punjab');
+insert into supplier values(3002,2,'sadique',022222222,'abc2@gmail','sadiqueali',123452,'sukker');
+insert into supplier values(3003,3,'sami',022222223,'abc3@gmail','samiali',123453,'kamber');
+insert into supplier values(3004,4,'ahad',022222224,'abc4@gmail','ahad',123454,'LARKANA');
+insert into supplier values(3005,5,'sajjad',022222225,'abc5@gmail','sajjad',123455,'Karaci');
+
+
+
+-----------------------------------------practice plspl ------------------------------------
+
+declare 
+cursor c1 is 
+select *
+from COMPANY
+where COMPANY_ID=2;
+COM_rec c1 %rowtype;
+begin 
+open c1 ;
+fetch c1 into COM_rec; 
+dbms_output.put_line(COM_rec.COMPANY_DESCRIPTION);
+dbms_output.put_line(COM_rec.COMPANY_NAME);
+end;
+
+
+
+declare
+cursor c3 is
+select p.product_items,c.COMPANY_ADDRESS from product p,company c
+where p.company_id=c.company_id;
+data_rec c3%rowtype;
+begin 
+open c3;
+fetch c3 into data_rec;
+dbms_output.put_line(data_rec.product_items);
+dbms_output.put_line(data_rec.company_address);
+close c3;
+end;
+
+
+
+
+declare
+cursor c3 is
+select p.product_items,c.COMPANY_ADDRESS from product p,company c
+where p.company_id=c.company_id;
+data_rec c3%rowtype;
+begin 
+open c3;
+loop
+fetch c3 into data_rec;
+dbms_output.put_line(data_rec.product_items);
+dbms_output.put_line(data_rec.company_address);
+exit when c3%rowcount=5;
+end loop;
+close c3;
+end;
+
+
+			(ORACLE AND WEB_DEVELOPEMENT-TRADE)PROJECT
+
+
+
+-----------------------------------------CREATE TABLES------------------------------------
+
+create table oracle_trade1(institution_id number(7),
+student_name varchar2(30)not null,
+trade_name varchar2(30)not null,
+roll_no varchar2(30)not null,
+GENDER varchar2(1)not null,
+CNIC_NO NUMBER(14)not null);
+
+alter table oracle_trade1
+add primary key(institution_id );
+
+create table web_development_trade1(institution_id number(7),
+student_name varchar2(30)not null,
+trade_name varchar2(30)not null,
+roll_no varchar2(30)not null,
+GENDER varchar2(1)not null,
+CNIC_NO NUMBER(14)not null);
+
+alter table web_development_trade1
+add constraint institution_id_fk
+foreign key(institution_id)
+references oracle_trade1(institution_id);
+
+
+desc web_development_trade1;
+
+desc oracle_trade1;
+
+-----------------------------------------INSERT DATA IN WEB_DEVELOPMENT------------------------------------
+
+insert into web_development_trade1(institution_id ,student_name ,trade_name ,roll_no ,GENDER ,CNIC_NO)
+valueS (001,'John','ORACLE',1,'M',44444444441);
+valueS (002,'Franklin','ORACLE',2,'M',44444444442);
+valueS (003,'Alicia','ORACLE',3,'F',44444444443);
+valueS (004,'Jennifer','ORACLE',4,'F',44444444444);
+valueS (005,'Ramesh','ORACLE',5,'M',44444444445);
+valueS (006,'Ahmad','ORACLE',6,'M',44444444446);
+valueS (007,'James','ORACLE',7,'M',44444444447);
+valueS (008,'JULIA','ORACLE',8,'F',44444444448);
+valueS (009,'MARYAM','ORACLE',9,'F',44444444449);
+valueS (010,'ANIES','ORACLE',10,'M',44444444450);
+
+
+
+-----------------------------------------INSERT DATA IN ORACLE------------------------------------
+
+
+insert into oracle_trade1(institution_id ,student_name ,trade_name ,roll_no ,GENDER ,CNIC_NO)
+valueS (001,'SADIQUE','ORACLE',1,'M',34444444441);
+valueS (002,'ALI','ORACLE ERP',2,'M',34444444442);
+valueS (003,'SABIR','ORACLE ERP',3,'M',34444444443);
+valueS (004,'AYAN','ORACLE ERP',4,'M',34444444444);
+valueS (005,'SAMI','ORACLE ERP',5,'M',34444444445);
+valueS (006,'AHAD','ORACLE ERP',6,'M',34444444446);
+valueS (007,'ABDULLUAH','ORACLE ERP',7,'M',34444444447);
+valueS (008,'HINA','ORACLE ERP',8,'F',34444444448);
+valueS (009,'NIDA','ORACLE ERP',9,'F',34444444449);
+valueS (010,'SAMEERA','ORACLE ERP',10,'F',34444444451);
+
+
+
+-----------------------------------------SQL------------------------------------
+
+SELECT * FROM  oracle_trade1;
+select * from web_development_trade1;
+
+SELECT O.STUDENT_NAME
+FROM web_development_trade1 W, oracle_trade1 O
+WHERE O.institution_id=W.institution_id;
+end;
+
+
+-----------------------------------------PLSQL------------------------------------
+1)
+declare 
+student_name varchar2(20) := :student_name;
+trade_name varchar2(20) := :trade_name;
+roll_no int := :roll_no;
+gender varchar2(20):= :gender;
+cnic_no int := :cnic_no;
+begin
+dbms_output.put_line(student_name);
+dbms_output.put_line(trade_name);
+dbms_output.put_line(roll_no);
+dbms_output.put_line(gender);
+dbms_output.put_line(cnic_no);
+end;
+
+2)
+declare 
+id number(7);
+name varchar2(40);
+begin 
+select employee_id,reverse(last_name) into id,name
+from employees
+where employee_id=149;
+dbms_output.put_line(id ||' '|| name );
+end; 
+
+
+3)
+Declare 
+emp_rec employees%rowtype;
+dept_rec departments%rowtype;
+a varchar2(50):=:id;
+begin 
+select * into emp_rec from employees where employee_id=a;
+select * into dept_rec from departments where department_id=80;
+dbms_output.put_line(emp_rec.last_name||'  '||emp_rec.salary);
+end;
+
