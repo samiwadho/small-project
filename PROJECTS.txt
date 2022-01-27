@@ -1,5 +1,6 @@
 
-					(SUPPLY CHAIN)PROJECT
+					PROJECT NUMBER 1
+				     (SUPPLY CHAIN)PROJECT
 
 -----------------------------------------CREATE TABLES ------------------------------------
 
@@ -137,6 +138,8 @@ close c3;
 end;
 
 
+
+				PROJECT NUMBER 2
 			(ORACLE AND WEB_DEVELOPEMENT-TRADE)PROJECT
 
 
@@ -253,3 +256,105 @@ select * into dept_rec from departments where department_id=80;
 dbms_output.put_line(emp_rec.last_name||'  '||emp_rec.salary);
 end;
 
+
+
+
+				    PROJECT NUMBER 3
+				(HOSPITAL MANAGEMENT SYSTEM)
+-----------------------------------------CREATE TABLES------------------------------------
+
+create table equipment1(equipment_id number(7),
+equipment_name varchar2(30),
+ constraint equipment_id_pk primary key (equipment_id) );
+
+
+
+
+create table medcines(medcines_id number(7),
+medcines_name varchar2(30), 
+constraint medcines_id_pk primary key(medcines_id));
+
+
+
+create table treatment(treat_id number(7),
+treat_type varchar2(30),
+constraint treat_id_pk primary key (treat_id));
+
+
+create table Patient(Patient_id number(7),
+Patient_name varchar2(30),
+Patient_caste varchar2(30),
+Patient_age varchar2(30),
+Patient_type varchar2(30),
+address varchar2(20),
+constraint patient_id_pk primary key (patient_id));
+
+
+create table check_up(check_id number(7),
+equipment_id number(7),
+medcines_id number(7),
+treat_id number(7),
+patient_id number(7),
+constraint check_id_pk primary key(check_id),
+constraint check_equipment_fk foreign key(equipment_id));
+
+
+-----------------------------------------INSERT DATA OF TABLE------------------------------------
+
+insert into equipment1 values('10001','Thermometer');
+insert into equipment1 values('10002','BP moniter');
+insert into equipment1 values('10003','X_RAY machine');
+insert into equipment1 values('10004','C_T scan machine');
+insert into equipment1 values('10005','Suger test meter');
+insert into equipment1 values('10006','Kit Gloccometer');
+insert into equipment1 values('10007','Syrings');
+insert into equipment1 values('10008','Urine sample');
+insert into equipment1 values('10009','Oxygen mask');
+insert into equipment1 values('10010','stethoscope');
+
+
+insert into medcines values('101','Brufan');
+insert into medcines values('102','Arsulum tab ');
+insert into medcines values('103','Corex syrup ');
+insert into medcines values('104','Relenza');
+insert into medcines values('105',' Arplet dengue');
+insert into medcines values('106','Glucophage');
+insert into medcines values('107','Doxil');
+insert into medcines values('108','Isoniazid');
+insert into medcines values('109','Ribavirin');
+insert into medcines values('110','Zitromax ');
+
+
+insert into treatment values(11,'Fever');
+insert into treatment values(12,'Malaria');
+insert into treatment values(13,'Cough');
+insert into treatment values(14,'Flu');
+insert into treatment values(15,'Dengue Fever');
+insert into treatment values(16,'Diabetes');
+insert into treatment values(17,'Cancer');
+insert into treatment values(18,'Tuberculosis');
+insert into treatment values(19,'Hepatitis');
+insert into treatment values(20,'Typhoid');
+
+insert into patient values(10501,'Sabir','Hakro',55,'Diabetes','Jamshoro');
+insert into patient values(10502,'Sadam','soomro',18,'fever','kamber');
+insert into patient values(10503,'Hussain','Abro',35,'Cancer','Larkana');
+insert into patient values(10504,'Saquib','Abbasi',8,'Cough','Jamshoro');
+insert into patient values(10505,'Ali','Gunejo',14,'fever','Hyderabad');
+insert into patient values(10506,'Amir','Magsi',32,'Diabetes','Jamshoro');
+insert into patient values(10507,'Bariq','Samo',16,'Cough','Karachi');
+insert into patient values(10508,'Gaffar','Leghari',50,'Cancer','Jamshoro');
+insert into patient values(10509,'Arslan','Jatoi',13,'Flu','Sukker');
+insert into patient values(10510,'Sami','Wadho',47,'Diabetes','Jamshoro');
+
+
+insert into check_up values(501,10001,101,11,10501);
+insert into check_up values(502,10002,102,12,10502);
+insert into check_up values(503,10003,103,13,10503);
+insert into check_up values(504,10004,104,14,10504);
+insert into check_up values(505,10005,105,15,10505);
+insert into check_up values(506,10006,106,16,10506);
+insert into check_up values(507,10007,107,17,10507);
+insert into check_up values(508,10008,108,18,10508);
+insert into check_up values(509,10009,109,19,10509);
+insert into check_up values(510,10010,110,20,10510);
