@@ -358,3 +358,75 @@ insert into check_up values(507,10007,107,17,10507);
 insert into check_up values(508,10008,108,18,10508);
 insert into check_up values(509,10009,109,19,10509);
 insert into check_up values(510,10010,110,20,10510);
+
+
+
+
+				PROJECT 
+Library management system
+ 
+-----------------------------------------CREATE TABLES------------------------------------
+create table employee(NAME varchar2(25), MINIT varchar2(4), LNAME varchar2(25), SSN NUMBER(11),
+BDATE DATE,ADDRESS varchar2(25), SEX VARCHAR2(1),SAL NUMBER(7),SUPERSSN varchar2(25),DNO NUMBER(2));
+
+create table Department (DNAME VARCHAR2(25),DNUMBER  NUMBER(1),MGRSSN NUMBER(11) , MGRSTARTDATE DATE);
+
+create table DEPT_LOCATIONS (DNUMBER number(7),DLOCATIONS varchar2(25));
+
+create table PROJECT (PNAME VARCHAR2(25),PNUMBER number(7),PLOCATION varchar2(25),DNUM number(7));
+
+create table BOOK(BOOK VARCHAR2(25),TITLE VARCHAR2(25),AVAILABLE VARCHAR2(25),AUTHER VARCHAR2(25),PRICE NUMBER(14));
+
+-----------------------------------------INSERT DATA OF TABLE------------------------------------
+
+insert into employee(name,minit,lname,ssn,bdate,address,sex,sal,superssn,dno)
+values('John','B','Smith',123456789,'09-JAN-1965','731 Fondren,Houston,TX','M',30000,'333445555',5);
+values('Franklin','T','Wong',333445555,'08-DEC-1955','638 Voss,Houston,TX,'M',40000,'888665555',5);
+values('Alicia','J','Zelaya',999887777,'19-JUL-1968','3321 Castle,Spring,TX','F',25000,'987654321',4);
+values('Jennifer','S','Wallance',987654321,'20-JUN-1941','291 Berry,Bellaire,TX','F',43000,'888665555',4);
+values('Ramesh','K','Narayan',666884444,'15-SEP-1962','975 Fire,Oak,Humble,TX','M',38000,'333445555',5);
+values('Joyce','A','English',453453453,'31-JUL-1972','56331 Rice,Houston,TX','F',25000,'333445555',5);
+values('Ahmad','V','Jabber',987987987,'29-MAR-1969','980 Dallas,Houston,TX','M',25000,'987654321',5);
+values('James','E','Bong',888665555,'10-NOV-37','450 Stone,Houston,Tx','M',550000,'344335555',1);
+
+
+
+INSERT INTO DEPARTMENT(DNAME,DNUMBER,MGRSSN,MGRSTARTDATE)
+VALUES('Research',5,333445555,'22-MAY-1988');
+VALUES('Administratain',4,987654321,'01-JAN-1995');
+VALUES('Headquarters',1,888665555,'19-JUN-1981');
+
+
+INSERT INTO DEPT_LOCATIONS(DNUMBER,DLOCATIONS)
+VALUES(1,'Houston');
+VALUES(4,'Stafford');
+VALUES(5,'Bellarie');
+VALUES(5,'Sugarland');
+VALUES(5,'Houston');
+
+
+INSERT INTO PROJECT(PNAME,PNUMBER,PLOCATION,DNUM)
+VALUES('ProductX',1,'Bellaire',5);
+VALUES('ProductY',2,'Sugarland',5);
+VALUES('ProductZ',3,'Houston',5);
+VALUES('Computerization',10,'Stafford',4);
+VALUES('Reorganization',20,'Houston',1);
+VALUES('Newbenefits',30,'Stafford',4);
+
+insert INTO BOOK(BOOK,TITLE, AUTHER, PRICE)
+VALUES('JONES & BARTLETT','COMPLEX ANALYSIS','DENNIES G.ZILL',1300);
+
+insert into BOOK (AVAILABLE)
+VALUES ('YES')
+WHERE TITLE = 'COMPLEX ANALYSIS';
+
+
+---------------------------------------SQL---------------------------------------
+
+select * from PROJECT;
+
+desc project;
+
+select * from  book;
+
+select *from department;
